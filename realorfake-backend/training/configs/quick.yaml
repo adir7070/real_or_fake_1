@@ -1,0 +1,33 @@
+arch: baseline_cnn
+input_size: 224
+batch_size: 64
+num_workers: 4
+
+optimizer:
+  name: adamw
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+
+scheduler:
+  name: cosine
+  warmup_epochs: 0
+
+epochs: 3
+early_stopping:
+  patience: 3
+  min_delta: 1.0e-4
+
+loss: cross_entropy
+freeze_backbone: false
+mixed_precision: false
+
+logging:
+  log_dir: runs/quick
+  log_every_n_steps: 20
+  save_top_k: 1
+
+augmentations:
+  jpeg_compression:
+    enabled: false
+    probabilities: []
+    qualities: []

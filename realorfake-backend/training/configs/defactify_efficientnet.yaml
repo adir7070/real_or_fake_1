@@ -1,0 +1,33 @@
+arch: efficientnet_b0
+input_size: 224
+batch_size: 32
+num_workers: 0
+
+optimizer:
+  name: adamw
+  lr: 5.0e-5
+  weight_decay: 1.0e-4
+
+scheduler:
+  name: cosine
+  warmup_epochs: 1
+
+epochs: 20
+early_stopping:
+  patience: 5
+  min_delta: 5.0e-4
+
+loss: cross_entropy
+freeze_backbone: false
+mixed_precision: false
+
+logging:
+  log_dir: runs/defactify_efficientnet
+  log_every_n_steps: 50
+  save_top_k: 1
+
+augmentations:
+  jpeg_compression:
+    enabled: true
+    probabilities: [0.3]
+    qualities: [75]

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: realorfake-backend
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: MODEL_ARCH
+        value: vit_b_16
+      - key: MODEL_PATH
+        value: models/best_model.pth
+      - key: CORS_ORIGINS
+        value: https://realorfake.vercel.app
+      - key: PUBLIC_APP_URL
+        value: https://realorfake.vercel.app
