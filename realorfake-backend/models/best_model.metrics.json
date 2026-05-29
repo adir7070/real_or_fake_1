@@ -1,0 +1,28 @@
+{
+  "training_metrics": {
+    "accuracy": 0.9827521559805025,
+    "auc": 0.9986360738153576,
+    "confusion_matrix": {
+      "tn": 2172,
+      "fp": 114,
+      "fn": 24,
+      "tp": 5691
+    },
+    "per_class": {
+      "real": {
+        "precision": 0.9890710382513661,
+        "recall": 0.9501312335958005,
+        "f1": 0.9692101740294511,
+        "support": 2286
+      },
+      "ai_generated": {
+        "precision": 0.9803617571059432,
+        "recall": 0.9958005249343832,
+        "f1": 0.9880208333333333,
+        "support": 5715
+      }
+    }
+  },
+  "cross_generator_results": [],
+  "jpeg_robustness": {}
+}

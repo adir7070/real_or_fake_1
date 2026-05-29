@@ -22,7 +22,7 @@ from app.ml.transforms import build_eval_transform
 CLASS_NAMES = ["real", "ai_generated"]
 
 
-def evaluate(checkpoint: Path, data_root: Path, arch: str, out_dir: Path) -> None:
+def evaluate(checkpoint: Path, data_root: Path, arch: str, out_dir: Path, split: str = "val") -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(arch, num_classes=2, freeze_backbone=False)
     state = torch.load(checkpoint, map_location=device, weights_only=True)
@@ -31,7 +31,7 @@ def evaluate(checkpoint: Path, data_root: Path, arch: str, out_dir: Path) -> Non
     model.load_state_dict(state)
     model.to(device).eval()
 
-    ds = CIFAKEDataset(data_root, "test", transform=build_eval_transform(224))
+    ds = CIFAKEDataset(data_root, split, transform=build_eval_transform(224))
     loader = DataLoader(ds, batch_size=64, shuffle=False, num_workers=0)
 
     all_probs, all_labels = [], []
@@ -119,9 +119,10 @@ def main() -> None:
     parser.add_argument("--data-root", required=True)
     parser.add_argument("--arch", default="vit_b_16")
     parser.add_argument("--out-dir", default="models")
+    parser.add_argument("--split", default="val", help="Dataset split to evaluate on")
     args = parser.parse_args()
     evaluate(
-        Path(args.checkpoint), Path(args.data_root), args.arch, Path(args.out_dir)
+        Path(args.checkpoint), Path(args.data_root), args.arch, Path(args.out_dir), args.split
     )
 
 
