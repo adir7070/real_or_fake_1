@@ -17,7 +17,7 @@ export default function AboutPage() {
       <p>
         הפרויקט פותח על ידי <strong>אדיר שלומוב</strong> במסגרת קורס למידת
         מכונה. הפרויקט קשור לפלטפורמת{" "}
-        <ExternalLink href="https://felora.ai">Felora</ExternalLink> — פלטפורמת
+        <ExternalLink href="https://felora.app">Felora</ExternalLink> — פלטפורמת
         AI ישראלית ליצירת תוכן, שהוותה השראה לפיתוח הכלי.
       </p>
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </ExternalLink>
         </li>
         <li>
-          <ExternalLink href="https://felora.ai">
+          <ExternalLink href="https://felora.app">
             Felora — פלטפורמת AI ישראלית
           </ExternalLink>
         </li>
